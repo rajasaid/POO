@@ -1,0 +1,38 @@
+{% extends 'orders/base.html' %}
+{% block title %} POO {% endblock %}
+
+{%block header%}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/style.css' %}">
+
+{%endblock%}
+
+  {%block body%}
+
+        <div class="welcome_box">
+          <header class="welcome_head">Welcome to Pinochios!</header>
+          <header>Make online pizza orders</header>
+        </div>
+        <div class="login_box">
+          <form action="{% url 'login' %}" method="POST" class="p_login_form">
+              {% csrf_token %}
+              <header class="p_login_head">Login:</header>
+              <input class="p_login_item" type="text" name="username" placeholder="Username..." value="" required>
+              <input class="p_login_item" type="password" name="password" placeholder="Password..." value="" required>
+              <input class="p_login_item p_login_btn" type="submit"  name="submit" value="Login">
+          </form>
+          <hr/>
+          <form action="{% url 'register' %}" method="POST" class="p_signup_form">
+              {% csrf_token %}
+              <header class="p_signup_head">Please Sign Up Here:</header>
+              <input class="p_signup_item" type="text" name="firstname" placeholder="Your First Name..." value="" required>
+              <input class="p_signup_item" type="text" name="lastname" placeholder="Your last Name..." value="" required>
+              <input class="p_signup_item" type="email" name="email" placeholder="Your Email..." value="" required>
+              <input class="p_signup_item" type="text" name="username" placeholder="Username..." value="" required>
+              <input class="p_signup_item" type="password" name="password" placeholder="Password..." value="" required>
+              <input class="p_signup_btn p_signup_item" type="submit"  name="submit" value="Register">
+          </form>
+        </div>
+
+
+ {%endblock%}

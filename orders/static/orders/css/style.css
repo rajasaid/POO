@@ -1,0 +1,138 @@
+body {
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  background: url(photo-pizza.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  font-family:  'Trocchi', serif; /*'Open Sans',  Helvetica, Arial, sans-serif;*/
+}
+
+.login_box {
+  width: 420px;
+  height: 700px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.welcome_box {
+
+  width: 450px;
+  height: 100px;
+  top:15%;
+  left:10%;
+  position: absolute;
+  background-color: inherit;
+  color: whitesmoke;
+  font-size: 200%;
+  letter-spacing: 2px;
+
+}
+.welcome_head {
+  font-size: 250%;
+}
+.welcome_box header {
+  display: inline-block;
+  margin: 20px 20px;
+}
+
+.login_box form {
+  display: flex;
+  align-self: center;
+  flex-flow: column;
+  align-items: left;
+  justify-content: space-between;
+}
+
+.login_box hr {
+    display: block;
+    align-self: stretch;
+    color: #FFFFFF;
+}
+.p_login_head {
+  margin: 10px 20px;
+  align-self: center;
+  font-size: 150%;
+}
+
+.p_signup_head {
+  margin: 30px 20px;
+  align-self: center;
+  font-size: 150%;
+}
+
+.p_login_form  {
+  color:#ffffcc; /*AF9A61; */
+  height: 230px;
+}
+
+.p_signup_form  {
+  color:#ffffcc;
+  height: 450px;
+}
+
+.p_signup_item {
+
+  margin-top: 10px;
+  border:none;
+  outline: none;
+  border-bottom: 2px solid #AF9A61;
+  /* border-left: 1px solid #AF9A61; */
+  background: none;
+  background-color: inherit;
+  color: white;
+  font-size: 24px;
+
+}
+.p_login_item {
+
+  margin-top: 10px;
+  border:none;
+  outline: none;
+  border-bottom: 2px solid #AF9A61;
+  /* border-left: 1px solid #AF9A61; */
+  background: none;
+  background-color: inherit;
+  color: white;
+  font-size: 24px;
+
+}
+.p_login_btn {
+
+  border: 1px solid #AF9A61;
+  font-size: 15px;
+  color: #fff;
+  background-color: rgba(20,20,200,0.5);
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 25px;
+}
+
+
+.p_signup_btn {
+
+  border: 1px solid #AF9A61;
+  font-size: 15px;
+  color: #fff;
+  background-color: rgba(20,20,200,0.5);
+  line-height: 1.2;
+  text-transform: uppercase;
+  padding: 0 20px;
+  height: 40px;
+  border-radius: 25px;
+}

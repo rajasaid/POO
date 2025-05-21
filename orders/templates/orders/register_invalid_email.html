@@ -1,0 +1,18 @@
+{% extends 'orders/base.html' %}
+{% block title %} WrongEmail {% endblock %}
+
+{%block header%}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/style.css' %}">
+
+{%endblock%}
+
+
+  {%block body%}
+        <div class="welcome_box">
+          <h2><header class="p_welcome_head">Invalid Email Address, it already exists</header></h2>
+          <h3><a href="{% url 'index' %}">Try to Log In</a></h3>
+        </div>
+      
+
+  {% endblock %}

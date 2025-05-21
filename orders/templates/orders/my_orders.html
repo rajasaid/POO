@@ -1,0 +1,64 @@
+{% extends 'orders/base.html' %}
+{% block title %} Orders {% endblock %}
+
+{%block header%}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/menu.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/morders.css' %}">
+{%endblock%}
+
+
+{%block body%}
+
+<div class="container">
+  <div class="header">
+    <form class="house" action="{% url 'menu' %}" method="get">
+      <button><img src="{%static 'orders/img/house.png' %}" alt="house image"></button>
+    </form>
+    <header>
+      Pinocchio's Pizza & Subs
+    </header>
+    <form class="orders_form" action="{% url 'menu' %}" method="GET">
+      <button id="btn_menu" value="Menu">Menu</button>
+    </form>
+    <form class="logout_form" action="{% url 'logout' %}" method="GET">
+      <button id="btn_logout"  value="Logout">Logout</button>
+    </form>
+  </div>
+  <div class="content">
+    <header id="user_name" class="user_name">{{user}}</header>
+    <div class="content_box">
+      <form id="delete_completed_form" class="delete_completed_form" action="{% url 'delete_completed' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" value="DELETE COMPLETED">
+      </form>
+      <div class="orders_table">
+        <table>
+          <thead>
+            <tr>
+              <th>Details</th>
+              <th>Completed</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for order in orders %}
+              <tr>
+                <!-- <td> {% for ord in order.cart_orders.all %} {% if ord.pizza %} {{ ord.pizza }} - {%endif%} {% if ord.sub %} + {{ord.sub}} {%endif%} {% if ord.pasta %} + {{ord.pasta}} {%endif%} {% if ord.salad %} + {{ord.salad}} {%endif%} {% if ord.platter %} + {{ord.platter}} {%endif%} {%endfor%}</td> -->
+                <td> {{order.name}}</td>
+                <td> {{order.completed}} </td>
+                <td> ${{order.price}} </td>
+              </tr>
+             {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    I AM A FOOTER
+  </div>
+</div>
+
+
+ {%endblock%}

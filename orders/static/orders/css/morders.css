@@ -1,0 +1,50 @@
+.user_name {
+
+  align-self: center;
+  font-size: 150%;
+  font-weight: bold;
+  margin: 50px 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.content_box {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 50px 0;
+  max-width: inherit;
+}
+.orders_table {
+  align-self: center;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  color: black;
+  font-size: 120%;
+  font-family: 'Nunito', sans-serif;
+}
+
+table thead tr {
+  background: rgba(0,0,0,0.5);
+  color: whitesmoke;
+}
+table thead th, table tbody td {
+  max-width: 1200px;
+}
+.delete_completed_form {
+  width: 200px;
+  margin: 0 100px;
+}
+
+.delete_completed_form input {
+  width: 150px;
+  height: 50px;
+  border-radius: 25px;
+  background: rgba(220,45,11,0.8);
+  /* border:none; */
+  box-shadow: 2px 1px 1px 2px black;
+  cursor: pointer;
+}
+
+.delete_completed_form input:focus {
+  outline: none;
+}

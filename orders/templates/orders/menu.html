@@ -1,0 +1,159 @@
+<!-- <!DOCTYPE html> -->
+{% extends 'orders/base.html' %}
+{% block title %} Main Menu {% endblock %}
+
+{%block header%}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/menu.css' %}">
+{%endblock%}
+
+
+{%block body%}
+<div class="container">
+  <div class="header">
+    <form class="house" action="{% url 'menu' %}" method="get">
+      <button><img src="{%static 'orders/img/house.png' %}" alt="house image"></button>
+    </form>
+    <header>
+      Pinocchio's Pizza & Subs
+    </header>
+    <form class="orders_form" action="{% url 'my_orders' %}" method="GET">
+      <button id="btn_my_orders" value="My Orders">My Orders</button>
+    </form>
+    <form class="logout_form" action="{% url 'logout' %}" method="GET">
+      <button id="btn_logout"  value="Logout">Logout</button>
+    </form>
+  </div>
+  <div class="content">
+    <div class="cart_key">
+      <input type="checkbox" id="cart_check" onclick="handleCart()" name="cart_check"/>
+      <img src="{% static 'orders/img/cart.svg' %}" alt="cart_svg">
+    </div>
+    <div class="cart_box" id="cart_box">
+      <header>
+        YOUR CART
+      </header>
+      <div class="cart_link_back">
+        <a href="#" onClick="handleCartBack()"> <img src="{% static 'orders/img/left-arrow.png' %}" alt="left arrow img"> <span>Continue Shopping</span></a>
+      </div>
+      <div class="cart_content">
+        <div class="cart_table">
+          <table id="cart_table">
+            <tr>
+              <th>Delete</th>
+              <th>OrderID</th>
+              <th>Product</th>
+              <th>Size</th>
+              <th>Extras</th>
+              <th>Subtotal</th>
+            </tr>
+            <!-- <tr>
+              <td><div class="table_col"><button name="clear_btn">Remove</button></div></td>
+              <td><div class="table_col">113323</div></td>
+              <td><div class="table_col">Regular Pizza</div></td>
+              <td><div class="table_col">Small</div></td>
+              <td><div class="table_col">cheese, chicken, meatballs, onions, zuccini</div> </td>
+              <td><div class="table_col">$18.30</div></td>
+            </tr> -->
+          </table>
+          <header id="cart_message">
+            Your Cart is empty!
+          </header>
+        </div>
+        <div class="cart_details">
+          <header> ORDER DETAILS </header>
+          <p>USERNAME: <span id="user_name">{{username}}</span></p>
+          <p>Total: <span id="total_in_cart"> </span></p>
+          <button id="ConfirmOrder_Btn">CONFIRM ORDER</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu_content">
+      <h2>MENU</h2>
+      <div class="menu_nav">
+        <nav>
+          <ul>
+            <li><a href="#r_pizza">Regular Pizza</a></li>
+            <li><a href="#s_pizza">Sicilian Pizza</a></li>
+            <li><a href="#subs">Subs</a></li>
+            <li><a href="#pasta">Pasta</a></li>
+            <li><a href="#salads">Salads</a></li>
+            <li><a href="#platter">Dinner PLatters</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="menu_grid">
+        <div class="r-pizza-card" id="r_pizza">
+          <img src="{% static 'orders/img/r-pizza.jpg' %}" alt="regular pizza img">
+          <header>
+          REGULAR PIZZA
+          </header>
+          <p>Starts with <b>$13.25</b></p>
+          <form action="{% url 'r_pizza_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+        <div class="s-pizza-card" id="s_pizza">
+          <img src="{% static 'orders/img/s-pizza.jpg' %}" alt="sicilian pizza img">
+          <header>
+          SICILIAN PIZZA
+          </header>
+          <p>Starts with <b>$25.25</b></p>
+          <form action="{% url 's_pizza_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+        <div class="subs-card" id="subs">
+          <img src="{% static 'orders/img/subs.jpg' %}" alt="subs img">
+          <header>
+          SUBS
+          </header>
+          <p>Starts with <b>$5.10</b></p>
+          <form action="{% url 'subs_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+        <div class="pastas-card" id="pasta">
+          <img src="{% static 'orders/img/pasta.jpg' %}" alt="pasta img">
+          <header>
+          PASTA
+          </header>
+          <p>Starts with <b>$7.00</b></p>
+          <form action="{% url 'pasta_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+        <div class="salad-card" id="salads">
+          <img src="{% static 'orders/img/salad.jpg' %}" alt="salad img">
+          <header>
+          SALAD
+          </header>
+          <p>Starts with <b>$6.75</b></p>
+          <form action="{% url 'salad_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+        <div class="platter-card" id="platter">
+          <img src="{% static 'orders/img/platter.jpg' %}" alt="dinner platter img">
+          <header>
+          DINNER PLATTER
+          </header>
+          <p>Starts with <b>$40</b></p>
+          <form action="{% url 'platter_menu' %}" method="get">
+            <button value="ORDER NOW">ORDER NOW</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    I AM A FOOTER
+  </div>
+</div>
+
+
+
+<!-- adding javascript  -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<script src="{% static  'orders/js/menu.js'  %}"> </script>
+ {%endblock%}

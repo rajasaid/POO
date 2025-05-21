@@ -1,0 +1,156 @@
+<!-- <!DOCTYPE html> -->
+{% extends 'orders/base.html' %}
+{% block title %} Main Menu {% endblock %}
+
+{%block header%}
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/menu.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static  'orders/css/side_menu.css' %}">
+{%endblock%}
+
+
+{%block body%}
+
+<div class="container">
+  <div class="header">
+    <form class="house" action="{% url 'menu' %}" method="get">
+      <button><img src="{%static 'orders/img/house.png' %}" alt="house image"></button>
+    </form>
+    <header>
+      Pinocchio's Pizza & Subs
+    </header>
+    <form class="orders_form" action="{% url 'my_orders' %}" method="GET">
+      <button id="btn_my_orders" value="My Orders">My Orders</button>
+    </form>
+    <form class="logout_form" action="{% url 'logout' %}" method="GET">
+      <button id="btn_logout"  value="Logout">Logout</button>
+    </form>
+  </div>
+  <div class="content">
+    <div class="cart_key">
+      <input type="checkbox" id="cart_check" onclick="handleCart()" name="cart_check"/>
+      <img src="{% static 'orders/img/cart.svg' %}" alt="cart_svg">
+    </div>
+    <div class="cart_box" id="cart_box">
+      <header>
+        YOUR CART
+      </header>
+      <div class="cart_link_back">
+        <a href="#" onClick="handleCartBack()"> <img src="{% static 'orders/img/left-arrow.png' %}" alt="left arrow img"> <span>Continue Shopping</span></a>
+      </div>
+      <div class="cart_content">
+        <div class="cart_table">
+          <table id="cart_table">
+            <tr>
+              <th>Delete</th>
+              <th>OrderID</th>
+              <th>Product</th>
+              <th>Size</th>
+              <th>Extras</th>
+              <th>Subtotal</th>
+            </tr>
+          </table>
+          <header id="cart_message">
+            Your Cart is empty!
+          </header>
+        </div>
+        <div class="cart_details">
+          <header> ORDER DETAILS </header>
+          <p>USERNAME: <span id="user_name">{{username}}</span></p>
+          <p>Total: <span id="total_in_cart"> </span></p>
+          <button id="ConfirmOrder_Btn">CONFIRM ORDER</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu_content">
+      <h2>Regular Pizza Menu</h2>
+      <div class="content_box">
+        <form class="form_pizza_order" id="form_r_pizza_order">
+          <div class="details">
+            <h3>CHOOSE YOUR REGULAR PIZZA:</h3>
+            <div class="size_bar">
+              <header> SIZE - </header>
+              <input type="radio" id="small"  name="size" value="small" checked/>
+              <label for="small"> Small </label>
+              <input type="radio" id="large"  name="size" value="large">
+              <label for="large"> Large </label>
+            </div>
+            <header>
+              TOPPING - CHOOSE UPTO 5:
+            </header>
+            <div class="topping_bar">
+              {% for topp in toppings %}
+              <div class="one-top">
+                <input type="checkbox" id="{{ topp.name }}"  name="topping" value="{{ topp.name }}">
+                <label for="{{ topp.name }}"> {{topp.name}}</label>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="prices">
+            <img style="margin: 50px 0; border-radius: 30px;" src="{% static 'orders/img/r-pizza.jpg' %}" alt="regular pizza img">
+            <h3>Price Table:</h3>
+            <table class="table">
+              <thead class="t_head">
+                <tr>
+                  <td>#</td>
+                  <td>ADDING</td>
+                  <td>SMALL</td>
+                  <td>LARGE</td>
+                </tr>
+              </thead>
+              <tbody class="t_body">
+                <tr>
+                  <th>1</th>
+                  <td>Cheese</td>
+                  <td>13.25</td>
+                  <td>18.75</td>
+                </tr>
+                <tr>
+                  <th>2</th>
+                  <td>One Topping</td>
+                  <td>14.25</td>
+                  <td>20.75</td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td> Two Toppings</td>
+                  <td> 15.75 </td>
+                  <td> 22.75 </td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td> Three Toppings</td>
+                  <td> 16.75 </td>
+                  <td> 24.75 </td>
+                </tr>
+                <tr>
+                  <th>5</th>
+                  <td> Special (5 Topps)</td>
+                  <td> 18.30 </td>
+                  <td> 26.75 </td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="current_total_price_box">
+              <header>CURRENT PRICE:</header>
+              <p id="r_pizza_total_price"></p>
+            </div>
+            <div class="add_to_cart_side">
+              <input type="submit" name="add_to_cart" value="ADD TO CART">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    I AM A FOOTER
+  </div>
+</div>
+
+<!-- adding javascript  -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+<script src="{% static  'orders/js/menu.js'  %}"> </script>
+<script src="{% static  'orders/js/r_pizza_menu.js'  %}"> </script>
+{%endblock%}

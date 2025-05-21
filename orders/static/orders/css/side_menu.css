@@ -1,0 +1,139 @@
+
+.content_box, .form_pizza_order, .form_sub_order,.form_pasta_order,
+.form_salad_order, .form_platter_order {
+  width: 1000px;
+  align-self:center;
+  height: auto;
+  display: flex;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  /* align-items: center; */
+  justify-content: flex-start;
+}
+
+.details, .prices {
+  display: flex;
+  flex-flow: column;
+  width: 500px;
+  height: 100%;
+  align-items: left;
+  margin: 30px 30px;
+}
+
+.details h3, .prices h3 {
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+  margin: 20px 0;
+  font-size: 140%;
+}
+
+.details header {
+  font-weight: bold;
+  font-size: 110%;
+  margin: 20px 0;
+}
+
+.size_bar {
+  margin: 10px 0;
+  font-weight: bold;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.size_bar input {
+  margin: 0 20px;
+}
+
+.topping_bar, .sub_bar, .pasta_bar, .salad_bar ,.platter_bar {
+  margin: 10px 0;
+  font-weight: bold;
+  display: flex;
+  flex-flow: column;
+  align-items: left;
+}
+.one-top, .one-sub, .one-pasta,.one-salad, .one-platter {
+  display: flex;
+  margin: 10px 0;
+}
+
+.extra_cheese_bar {
+  display: flex;
+  margin: 10px 0;
+  font-weight: bold;
+  align-items: left;
+}
+.topping_bar input[type=checkbox], .extra_cheese_bar input[type=checkbox],
+.sub_bar input[type=radio], .pasta_bar input[type=radio],
+.salad_bar input[type=radio], .platter_bar input[type=radio] {
+  transform: scale(2);
+  margin: 0 10px;
+  display: block;
+}
+
+.topping_bar label, .extra_cheese_bar label,
+.sub_bar label, .pasta_bar label, .salad_bar label, .platter_bar label {
+  display: block;
+  font-size: 110%;
+  margin: 0 10px;
+}
+
+
+.table {
+  /* font-family: monospace; */
+  font-size:150%;
+}
+
+.t_head {
+  font-weight: bolder;
+}
+
+.add_to_cart_side {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-end;
+  /* margin: 50px 0; */
+  height: auto;
+}
+
+.add_to_cart_side input {
+  width: 200px;
+  height:  50px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(10,30,210,0.8);
+  cursor: pointer;
+  z-index: 1;
+  box-shadow: 1px 3px 4px 2px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.add_to_cart_side input:focus {
+  outline: none;
+}
+
+.add_to_cart_side input:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.current_total_price_box {
+  margin: 50px 0;
+  display: flex;
+  width: 300px;
+  height: 100px;
+  align-items: center;
+}
+
+.current_total_price_box header {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 120%;
+  margin: 50px 0;
+}
+.current_total_price_box p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 110%;
+  margin-left: 30px;
+}
